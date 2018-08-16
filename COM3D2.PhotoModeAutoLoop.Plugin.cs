@@ -63,7 +63,27 @@ namespace COM3D2.PhotoModeAutLoop.Plugin
                         if(isLoop>5){
                             isLoop=0;
                         }
-                        Debug.Log("PhotoModeAutoLoop Input:"+isLoop);
+                        switch (isLoop)
+                        {
+                            case 1:
+                                Console.WriteLine("Case 0 Once");
+                                break;
+                            case 2:
+                                Console.WriteLine("Case 1 Loop");
+                                break;
+                            case 3:
+                                Console.WriteLine("Case 2 PingPong");
+                                break;
+                            case 4:
+                                Console.WriteLine("Case 3 Default");
+                                break;
+                            case 5:
+                                Console.WriteLine("Case 4 ClampForever");
+                                break;
+                            default:
+                                Console.WriteLine("Default case");
+                                break;
+                        }
 					}
                     if (isLoop>0){
                         
@@ -86,11 +106,11 @@ namespace COM3D2.PhotoModeAutLoop.Plugin
                                             {
                                                 case 1:
                                                     anm.wrapMode = WrapMode.Once;
-                                                    //Console.WriteLine("Case 0 Once");
+
                                                     break;
                                                 case 2:
                                                     anm.wrapMode = WrapMode.Loop;
-                                                    //Console.WriteLine("Case 1 Loop");
+
                                                     break;
                                                 case 3:
                                                     anm.wrapMode = WrapMode.PingPong;
