@@ -27,7 +27,7 @@ namespace COM3D2.PhotoModeAutLoop.Plugin
 	public class PhotoModeAutoLoop: PluginBase
 	{
 		//private bool isStudio = false;
-        private int isLoop = 2;
+        private int isLoop = 0;
 		private float deltaTotal = 0;
     
 		public void Awake()
@@ -66,19 +66,19 @@ namespace COM3D2.PhotoModeAutLoop.Plugin
                         switch (isLoop)
                         {
                             case 1:
-                                Console.WriteLine("Case 0 Once");
+                                Console.WriteLine("Case Once");
                                 break;
                             case 2:
-                                Console.WriteLine("Case 1 Loop");
+                                Console.WriteLine("Case Loop");
                                 break;
                             case 3:
-                                Console.WriteLine("Case 2 PingPong");
+                                Console.WriteLine("Case PingPong");
                                 break;
                             case 4:
-                                Console.WriteLine("Case 3 Default");
+                                Console.WriteLine("Case Default");
                                 break;
                             case 5:
-                                Console.WriteLine("Case 4 ClampForever");
+                                Console.WriteLine("Case ClampForever");
                                 break;
                             default:
                                 Console.WriteLine("Default case");
@@ -144,24 +144,26 @@ namespace COM3D2.PhotoModeAutLoop.Plugin
 
 		private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
 		{
-			//try
-			//{
-            //    if (scene.name == "ScenePhotoMode")
-			//	//if (scene.buildIndex == 27)
-			//	{
-			//		//スタジオモード
-			//		isStudio = true;
-			//	}
-			//	else
-			//	{
-			//		//スタジオモード以外
-			//		isStudio = false;
-			//	}
-			//}
-			//catch (Exception e)
-			//{
-			//	Debug.LogError(e.ToString());
-			//}
+			try
+			{
+                if (scene.name == "ScenePhotoMode")
+				//if (scene.buildIndex == 27)
+				{
+                    //スタジオモード
+                    //isStudio = true;
+                    isLoop = 2;
+                }
+				else
+				{
+                    //スタジオモード以外
+                    //isStudio = false;
+                    isLoop = 0;
+                }
+			}
+			catch (Exception e)
+			{
+				Debug.LogError(e.ToString());
+			}
 		}
 
 		public void OnGUI()
